@@ -12,7 +12,9 @@
 html/
 BookShelf.vcxproj
 BookShelf.vcxproj.filters
-
+stdafx.cpp
+stdafx.h
+targetver.h
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
