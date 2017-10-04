@@ -2,10 +2,12 @@
 #include "Book.h"
 
 
-Book::Book()
+Book::Book(std::string & author_, std::string & title_, int & year_)
 {
+    author = author_;
+    title = title_;
+    year = year_;
 }
-
 
 Book::~Book()
 {
@@ -13,30 +15,33 @@ Book::~Book()
 
 bool Book::setAuthor(std::string & author_)
 {
-    return false;
+    author = author_;
+    return true;
 }
 
 bool Book::setTitle(std::string & title_)
 {
-    return false;
+    title = title_;
+    return true;
 }
 
 bool Book::setYear(int & year_)
 {
-    return false;
+    year = year_;
+    return true;
 }
 
 std::string Book::getAuthor()
 {
-    return std::string();
+    return author;
 }
 
 std::string Book::getTitle()
 {
-    return std::string();
+    return title;
 }
 
 int Book::getYear()
 {
-    return 0;
+    return year;
 }

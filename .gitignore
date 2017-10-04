@@ -9,6 +9,9 @@
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
+html/
+BookShelf.vcxproj
+BookShelf.vcxproj.filters
 
 # Build results
 [Dd]ebug/
