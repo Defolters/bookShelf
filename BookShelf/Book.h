@@ -29,9 +29,9 @@ public:
     bool setAuthor(std::string& author_);
     bool setTitle(std::string& title_);
     bool setYear(int& year_);
-    std::string getAuthor();
-    std::string getTitle();
-    int getYear();
+    const std::string getAuthor();
+    const std::string getTitle();
+    const int getYear();
 
 private:
     std::string author;
