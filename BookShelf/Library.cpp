@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "Library.h"
 #include <algorithm>
 
@@ -44,7 +43,15 @@ std::vector<Book> Library::getNameList(std::string name)
 
 bool Library::deleteBook(std::string name)
 {
-    auto pos = std::find_if(books.begin(), books.end(), [&](const Book bk)(return bk.getTitle() == name));
+    for (auto pos = books.begin(); pos != books.end(); pos ++)
+    {
+        if (pos->getTitle() == name)
+        {
+             books.erase(pos);
+             return true;
+        }
+    }
+    return false;
 }
 
 Library::~Library()
