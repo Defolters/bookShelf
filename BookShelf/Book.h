@@ -4,19 +4,6 @@
 
 Just book
 */
-/*!
-\fn bool setAuthor(std::string& author_);
-\brief Set author
-\param[in] author_ Name of author
-\return bool
-*/
-
-/*!
-\fn bool setTitle(std::string& title_);
-\brief Serious hash function
-\param[in] title_ Title of the book
-\return bool
-*/
 #ifndef BOOK
 #define BOOK
 #include <string>
@@ -24,8 +11,21 @@ Just book
 class Book
 {
 public:
-    Book();
+    //! Constructor
+    /*!
+    \param std::string& author_.
+    \param std::string& title_
+    \param int& year_
+    \return The test results
+    */
+    Book(std::string& author_, std::string& title_, int& year_);
+    //! Constructor
     ~Book();
+    //! setAuthor
+    /*!
+    \param author_ name of author.
+    \return true
+    */
     bool setAuthor(std::string& author_);
     bool setTitle(std::string& title_);
     bool setYear(int& year_);
