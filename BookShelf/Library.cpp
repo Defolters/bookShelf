@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "Library.h"
 #include <algorithm>
 
@@ -19,10 +20,7 @@ std::vector<Book> Library::getAuthorList(std::string author)
     for (Book bk : books)
         if (bk.getAuthor() == author)
             ret.push_back(bk);
-    if (ret.size() == 0)
-        return nullptr;
-    else
-        return ret;
+    return ret;
 }
 
 std::vector<Book> Library::getYearList(int year)
@@ -41,11 +39,12 @@ std::vector<Book> Library::getNameList(std::string name)
         if (bk.getTitle() == name)
             ret.push_back(bk);
     return ret;
+
 }
 
 bool Library::deleteBook(std::string name)
 {
-    auto pos = std::find_if(books.begin(), books.end(), [&] (const Book bk)(return bk.getTitle() == name));
+    auto pos = std::find_if(books.begin(), books.end(), [&](const Book bk)(return bk.getTitle() == name));
 }
 
 Library::~Library()
