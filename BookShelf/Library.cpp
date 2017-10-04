@@ -6,6 +6,13 @@ Library::Library()
 
 }
 
+Book Library::getBook(std::string name)
+{
+    for (auto pos = books.begin(); pos != books.end();pos ++)
+        if (pos->getTitle() == name)
+             return (*pos);
+}
+
 bool Library::addBook (std::string name, int year, std::string author)
 {
     Book temp(author, name, year);
@@ -43,7 +50,9 @@ std::vector<Book> Library::getNameList(std::string name)
 
 bool Library::deleteBook(std::string name)
 {
-    for (auto pos = books.begin(); pos != books.end(); pos ++)
+    //auto pos = std::find_if(books.begin(), books.end(), [&name](const Book &arg) { return arg.getTitle() == name; });
+
+    for (auto pos = books.begin(); pos != books.end();pos ++)
     {
         if (pos->getTitle() == name)
         {
