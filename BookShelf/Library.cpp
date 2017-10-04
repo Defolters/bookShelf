@@ -4,6 +4,7 @@
 
 Library::Library()
 {
+
 }
 
 bool Library::addBook (std::string name, int year, std::string author)
@@ -37,7 +38,8 @@ std::vector<Book> Library::getNameList(std::string name)
     for (Book bk : books)
         if (bk.getTitle() == name)
             ret.push_back(bk);
-     return ret;
+    return ret;
+
 }
 
 bool Library::deleteBook(std::string name)
