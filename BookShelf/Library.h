@@ -5,22 +5,64 @@
 #include <list>
 #include "Book.h"
 
+//!  A class that implements library.
+/*!
+This class has also some methods to control library
+*/
 class Library
-{
-    private:
-        const int RESERVE_BOOKS = 100;
-        std::list<Book> books;
-    public:
-        Library();
-        bool addBook (std::string name, int year, std::string author);
-        Book getBook(std::string name);
-        std::vector<Book> getAuthorList(std::string author);
-        std::vector<Book> getYearList(int year);
-        std::vector<Book> getNameList(std::string name);
-        bool deleteBook(std::string name);
+{    
+public:
+    //! Constructor
+    Library();
 
-        virtual ~Library();
+    //! add book to the library
+    /*!
+    \param author name of author
+    \param title title of the book
+    \param year year of publication
+    \return true or false
+    */
+    bool addBook (std::string author, std::string title, int year);
 
+    //! get book with specified title
+    /*!
+    \param title title of the book
+    \return Book
+    */
+    Book getBook(std::string title);
+
+    //! get list of books with specified author's name
+    /*!
+    \param author name of author.
+    \return vector<Book>
+    */
+    std::vector<Book> getAuthorList(std::string author);
+
+    //! get list of books with specified year of publishing
+    /*!
+    \param year year of publication
+    \return vector<Book>
+    */
+    std::vector<Book> getYearList(int year);
+
+    //! get list of books with specified title
+    /*!
+    \param title title of the book
+    \return vector<Book>
+    */
+    std::vector<Book> getTitleList(std::string title);
+
+    //! delete book from library
+    /*!
+    \param title title of the book
+    \return true or false
+    */
+    bool deleteBook(std::string title);
+    
+    //! Destructor
+    ~Library();
+private:
+    std::list<Book> books; /*!< list of books. */ 
 };
 
 #endif // LIBRARY_H

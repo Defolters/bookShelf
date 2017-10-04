@@ -30,17 +30,17 @@ bool Book::setYear(int & year_)
     return true;
 }
 
-const std::string Book::getAuthor()
+std::string Book::getAuthor()
 {
     return author;
 }
 
-const  std::string Book::getTitle()
+std::string Book::getTitle()
 {
     return title;
 }
 
-const int Book::getYear()
+int Book::getYear()
 {
     return year;
 }

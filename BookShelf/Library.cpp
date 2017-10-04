@@ -2,20 +2,19 @@
 #include <algorithm>
 
 Library::Library()
-{
+{}
 
-}
-
-Book Library::getBook(std::string name)
+Book Library::getBook(std::string title)
 {
     for (auto pos = books.begin(); pos != books.end();pos ++)
-        if (pos->getTitle() == name)
+        if (pos->getTitle() == title)
              return (*pos);
+    throw;
 }
 
-bool Library::addBook (std::string name, int year, std::string author)
+bool Library::addBook(std::string author, std::string title, int year)
 {
-    Book temp(author, name, year);
+    Book temp(author, title, year);
     books.push_back(temp);
     return true;
 }
@@ -38,23 +37,22 @@ std::vector<Book> Library::getYearList(int year)
     return ret;
 }
 
-std::vector<Book> Library::getNameList(std::string name)
+std::vector<Book> Library::getTitleList(std::string title)
 {
     std::vector<Book> ret;
     for (Book bk : books)
-        if (bk.getTitle() == name)
+        if (bk.getTitle() == title)
             ret.push_back(bk);
     return ret;
-
 }
 
-bool Library::deleteBook(std::string name)
+bool Library::deleteBook(std::string title)
 {
     //auto pos = std::find_if(books.begin(), books.end(), [&name](const Book &arg) { return arg.getTitle() == name; });
 
     for (auto pos = books.begin(); pos != books.end();pos ++)
     {
-        if (pos->getTitle() == name)
+        if (pos->getTitle() == title)
         {
              books.erase(pos);
              return true;
@@ -64,6 +62,4 @@ bool Library::deleteBook(std::string name)
 }
 
 Library::~Library()
-{
-
-}
+{}

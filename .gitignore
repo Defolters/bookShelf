@@ -9,7 +9,6 @@
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
-html/
 BookShelf.vcxproj
 BookShelf.vcxproj.filters
 stdafx.cpp
