@@ -6,10 +6,18 @@ Library::Library()
 
 Book Library::getBook(std::string title)
 {
-    for (auto pos = books.begin(); pos != books.end();pos ++)
+    auto pos = books.begin();
+    for (; pos != books.end();pos ++)
         if (pos->getTitle() == title)
              return (*pos);
-    throw;
+    if (pos == books.end())
+    {
+        std::string authorER = "ERROR";
+        std::string titleER = "ERROR";
+        int yearER = 0;
+        Book tmp(authorER, titleER, yearER);
+        return tmp;
+    }
 }
 
 bool Library::addBook(std::string author, std::string title, int year)
@@ -48,17 +56,14 @@ std::vector<Book> Library::getTitleList(std::string title)
 
 bool Library::deleteBook(std::string title)
 {
-    //auto pos = std::find_if(books.begin(), books.end(), [&name](const Book &arg) { return arg.getTitle() == name; });
-
-    for (auto pos = books.begin(); pos != books.end();pos ++)
+    auto pos = std::find_if(books.begin(), books.end(), [&title](Book &arg) { return arg.getTitle() == title; });
+    if (pos != books.end())
     {
-        if (pos->getTitle() == title)
-        {
-             books.erase(pos);
-             return true;
-        }
+        books.erase(pos);
+        return true;
     }
-    return false;
+    else
+        return false;
 }
 
 Library::~Library()
