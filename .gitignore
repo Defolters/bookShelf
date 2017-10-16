@@ -73,6 +73,7 @@ artifacts/
 *.pidb
 *.svclog
 *.scc
+*.pro
 
 # Chutzpah Test files
 _Chutzpah*
@@ -87,6 +88,8 @@ ipch/
 *.cachefile
 *.VC.db
 *.VC.VC.opendb
+
+build-LibraryQT-Desktop-Debug/
 
 # Visual Studio profiler
 *.psess
