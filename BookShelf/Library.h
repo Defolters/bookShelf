@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <list>
+#include <set>
 #include "Book.h"
 
 //!  A class that implements library.
@@ -52,6 +53,7 @@ public:
     */
     std::vector<Book> getTitleList(std::string title);
 
+    std::set<std::string> getAuthors();
     //! delete book from library
     /*!
     \param title title of the book
@@ -59,6 +61,7 @@ public:
     */
     bool deleteBook(std::string title);
     
+    bool deleteAuthor(std::string name);
     //! Destructor
     ~Library();
 private:

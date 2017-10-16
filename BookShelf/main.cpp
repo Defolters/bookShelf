@@ -31,5 +31,21 @@ int main()
         std::cout << bk.getAuthor() << " " << bk.getTitle() << " " << bk.getYear() << std::endl;
     }
 
+    std::set<std::string> authors = library.getAuthors();
+    std::cout << "\nlibrary.getAuthors()" << std::endl;
+    for (auto author : authors)
+        std::cout << author << ", ";
+    std::cout << std::endl;
+
+    std::cout << "\nlibrary.deleteAuthor(Nameless)" << std::endl;
+    library.deleteAuthor("Nameless");
+
+    std::cout << "\nlibrary.getAuthor(Nameless)" << std::endl;
+    std::vector<Book> vectorB = library.getAuthorList("Nameless");
+    for (Book bk : vectorB)
+    {
+        std::cout << bk.getAuthor() << " " << bk.getTitle() << " " << bk.getYear() << std::endl;
+    }
+
     return 0;
 }

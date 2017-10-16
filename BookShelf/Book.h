@@ -16,7 +16,7 @@ public:
     \param title_ title of the book
     \param year_ year of publication
     */
-    Book(std::string& author_, std::string& title_, int& year_);
+    Book(std::string author_, std::string title_, int year_);
 
     //! Destructor
     ~Book();

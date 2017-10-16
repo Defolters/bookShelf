@@ -33,6 +33,11 @@ std::vector<Book> Library::getAuthorList(std::string author)
     for (Book bk : books)
         if (bk.getAuthor() == author)
             ret.push_back(bk);
+    if (ret.size() == 0)
+    {
+        Book tmp = Book("ERROR", "ERROR", INT32_MAX);
+        ret.push_back(tmp);
+    }
     return ret;
 }
 
@@ -64,6 +69,30 @@ bool Library::deleteBook(std::string title)
     }
     else
         return false;
+}
+
+std::set<std::string> Library::getAuthors()
+{
+    std::set<std::string> retVal;
+    for (Book bk : books)
+        retVal.insert(bk.getAuthor());
+    return retVal;
+}
+
+bool Library::deleteAuthor(std::string name)
+{
+    bool deleted = false;
+    std::vector<std::list<Book>::iterator> ptrs;
+    auto pos = books.begin();
+    for (; pos != books.end();pos ++)
+        if (pos->getAuthor() == name)
+        {
+            ptrs.push_back(pos);
+            deleted = true;
+        }
+    for (auto ptr : ptrs)
+        books.erase(ptr);
+    return deleted;
 }
 
 Library::~Library()
