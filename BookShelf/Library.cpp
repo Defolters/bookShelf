@@ -7,7 +7,7 @@ Library::Library()
 Book Library::getBook(std::string title)
 {
     auto pos = books.begin();
-    for (; pos != books.end();pos ++)
+    for (; pos != books.end();pos++)
         if (pos->getTitle() == title)
              return (*pos);
     if (pos == books.end())

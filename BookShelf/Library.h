@@ -53,7 +53,12 @@ public:
     */
     std::vector<Book> getTitleList(std::string title);
 
+    //! get list of authors
+    /*!
+    \return set<std::string>
+    */
     std::set<std::string> getAuthors();
+
     //! delete book from library
     /*!
     \param title title of the book
@@ -61,7 +66,13 @@ public:
     */
     bool deleteBook(std::string title);
     
+    //! delete all books by given author
+    /*!
+    \param name name of the author
+    \return true or false
+    */
     bool deleteAuthor(std::string name);
+
     //! Destructor
     ~Library();
 private:

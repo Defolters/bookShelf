@@ -5,47 +5,85 @@
 int main()
 {
     Library library;
-    library.addBook("Somebody", "Chaos", 1995);
-    library.addBook("Somebody", "Heaven", 1997);
-    library.addBook("Somebody", "Hell", 1999);
-    library.addBook("Nameless", "Titleless", 1997);
+    if (library.addBook("Somebody", "Chaos", 1995))
+    {
+        std::cout << "library.addBook(\"Somebody\", \"Chaos\", 1995) was done" << std::endl;
+    }
+    else
+    {
+        std::cout << "library.addBook(\"Somebody\", \"Chaos\", 1995) error" << std::endl;
+
+    }
+
 
     Book book = library.getBook("Chaos");
-    std::cout << "library.getBook(\"Chaos\")\n"
-        << "Author: " << book.getAuthor()
-        << "Title: " << book.getTitle()
-        << "Year: " << book.getYear() << std::endl;
+    if (book.getTitle() == "Chaos")
+    {
+        std::cout << "library.getBook(\"Chaos\") was done" << std::endl;
+
+    }
+    else if (book.getTitle() == "ERROR")
+    {
+        std::cout << "library.getBook(\"Chaos\") error" << std::endl;
+
+    }
+
 
 
     std::vector<Book> vectorA = library.getAuthorList("Somebody");
-    std::cout << "\nlibrary.getAuthorList(\"Somebody\")" << std::endl;
-    for (Book bk : vectorA)
+    if ((!vectorA.empty()) && (vectorA[0].getAuthor() == "Somebody"))
     {
-        std::cout << bk.getAuthor() << " " << bk.getTitle() << " " << bk.getYear() << std::endl;
+        std::cout << "library.getAuthorList(\"Somebody\") was done" << std::endl;
     }
+    else
+    {
+        std::cout << "library.getAuthorList(\"Somebody\") error" << std::endl;
+    }
+    
 
     std::vector<Book> vectorY = library.getYearList(1997);
-    std::cout << "\nlibrary.getYearList(1997)" << std::endl;
-    for (Book bk : vectorY)
+    if ((!vectorY.empty()) && (vectorY[0].getYear() == 1997))
     {
-        std::cout << bk.getAuthor() << " " << bk.getTitle() << " " << bk.getYear() << std::endl;
+        std::cout << "library.getYearList(1997) error" << std::endl;
     }
+    else
+    {
+        std::cout << "library.getYearList(1997) was done" << std::endl;
+    }
+
+
 
     std::set<std::string> authors = library.getAuthors();
-    std::cout << "\nlibrary.getAuthors()" << std::endl;
-    for (auto author : authors)
-        std::cout << author << ", ";
-    std::cout << std::endl;
-
-    std::cout << "\nlibrary.deleteAuthor(Nameless)" << std::endl;
-    library.deleteAuthor("Nameless");
-
-    std::cout << "\nlibrary.getAuthor(Nameless)" << std::endl;
-    std::vector<Book> vectorB = library.getAuthorList("Nameless");
-    for (Book bk : vectorB)
+    if (authors.find("Somebody") != authors.end())
     {
-        std::cout << bk.getAuthor() << " " << bk.getTitle() << " " << bk.getYear() << std::endl;
+        std::cout << "library.getAuthors() was done" << std::endl;
+    }
+    else
+    {
+        std::cout << "library.getAuthors() error" << std::endl;
+
     }
 
+    if (library.deleteAuthor("Somebody"))
+    {
+        std::cout << "library.deleteAuthor(\"Nameless\") was done" << std::endl;
+    }
+    else
+    {
+        std::cout << "library.deleteAuthor(\"Nameless\") error" << std::endl;
+    }
+
+
+    std::vector<Book> vectorB = library.getAuthorList("Somebody");
+    if ((!vectorB.empty()) && (vectorB[0].getAuthor() == "Somebody"))
+    {
+        std::cout << "library.getAuthorList(\"Somebody\") error" << std::endl;
+    }
+    else
+    {
+        std::cout << "library.getAuthorList(\"Somebody\") was done" << std::endl;
+    }
+
+    std::cin.get();
     return 0;
 }
