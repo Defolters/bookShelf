@@ -23,35 +23,35 @@ public:
     \param year year of publication
     \return true or false
     */
-    bool addBook (std::string author, std::string title, int year);
+    bool addBook (const std::string author, const std::string title, const int year);
 
     //! get book with specified title
     /*!
     \param title title of the book
     \return Book
     */
-    Book getBook(std::string title);
+    Book getBook(const std::string title);
 
     //! get list of books with specified author's name
     /*!
     \param author name of author.
     \return vector<Book>
     */
-    std::vector<Book> getAuthorList(std::string author);
+    std::vector<Book> getAuthorList(const std::string author);
 
     //! get list of books with specified year of publishing
     /*!
     \param year year of publication
     \return vector<Book>
     */
-    std::vector<Book> getYearList(int year);
+    std::vector<Book> getYearList(const int year);
 
     //! get list of books with specified title
     /*!
     \param title title of the book
     \return vector<Book>
     */
-    std::vector<Book> getTitleList(std::string title);
+    std::vector<Book> getTitleList(const std::string title);
 
     //! get list of authors
     /*!
@@ -64,14 +64,14 @@ public:
     \param title title of the book
     \return true or false
     */
-    bool deleteBook(std::string title);
+    bool deleteBook(const std::string title);
     
     //! delete all books by given author
     /*!
     \param name name of the author
     \return true or false
     */
-    bool deleteAuthor(std::string name);
+    bool deleteAuthor(const std::string name);
 
     //! Destructor
     ~Library();

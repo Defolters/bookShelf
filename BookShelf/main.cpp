@@ -2,7 +2,9 @@
 #include "Book.h"
 #include "Testing.h"
 #include <iostream>
-
+/*
+    ¬се в set, перегрузить оператор сравнени€
+*/
 int main()
 {
     Library library;
@@ -16,7 +18,6 @@ int main()
         std::cout << "library.addBook(\"Somebody\", \"Chaos\", 1995) error" << std::endl;
 
     }
-
     try
     {
         Book book = library.getBook("Chaos");

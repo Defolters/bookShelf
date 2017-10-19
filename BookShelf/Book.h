@@ -16,8 +16,8 @@ public:
     \param title_ title of the book
     \param year_ year of publication
     */
-    Book(std::string& author_, std::string& title_, int& year_);
-
+    Book(const std::string& author_, const std::string& title_, const int& year_);
+    
     //! Destructor
     ~Book();
 
@@ -26,21 +26,21 @@ public:
     \param author_ name of author.
     \return true
     */
-    bool setAuthor(std::string& author_);
+    bool setAuthor(const std::string& author_);
 
     //! set title of the book
     /*!
     \param title_ title of the book
     \return true
     */
-    bool setTitle(std::string& title_);
+    bool setTitle(const std::string& title_);
 
     //! set year of publication
     /*!
     \param year_ year of publication
     \return true
     */
-    bool setYear(int& year_);
+    bool setYear(const int& year_);
 
     //! get name of author
     /*!

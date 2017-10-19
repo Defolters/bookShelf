@@ -1,7 +1,7 @@
 #include "Book.h"
 
 
-Book::Book(std::string& author_, std::string& title_, int& year_)
+Book::Book(const std::string& author_, const std::string& title_, const int& year_)
 {
     author = author_;
     title = title_;
@@ -12,19 +12,19 @@ Book::~Book()
 {
 }
 
-bool Book::setAuthor(std::string& author_)
+bool Book::setAuthor(const std::string& author_)
 {
     author = author_;
     return true;
 }
 
-bool Book::setTitle(std::string& title_)
+bool Book::setTitle(const std::string& title_)
 {
     title = title_;
     return true;
 }
 
-bool Book::setYear(int& year_)
+bool Book::setYear(const int& year_)
 {
     year = year_;
     return true;

@@ -5,7 +5,7 @@
 Library::Library()
 {}
 
-Book Library::getBook(std::string title)
+Book Library::getBook(const std::string title)
 {
     auto pos = books.begin();
     for (; pos != books.end();pos++)
@@ -18,14 +18,14 @@ Book Library::getBook(std::string title)
     }
 }
 
-bool Library::addBook(std::string author, std::string title, int year)
+bool Library::addBook(const std::string author, const std::string title, const int year)
 {
     Book temp(author, title, year);
     books.push_back(temp);
     return true;
 }
 
-std::vector<Book> Library::getAuthorList(std::string author)
+std::vector<Book> Library::getAuthorList(const std::string author)
 {
     std::vector<Book> ret;
     for (Book bk : books)
@@ -39,7 +39,7 @@ std::vector<Book> Library::getAuthorList(std::string author)
     return ret;
 }
 
-std::vector<Book> Library::getYearList(int year)
+std::vector<Book> Library::getYearList(const int year)
 {
     std::vector<Book> ret;
     for (Book bk : books)
@@ -53,7 +53,7 @@ std::vector<Book> Library::getYearList(int year)
     return ret;
 }
 
-std::vector<Book> Library::getTitleList(std::string title)
+std::vector<Book> Library::getTitleList(const std::string title)
 {
     std::vector<Book> ret;
     for (Book bk : books)
@@ -67,7 +67,7 @@ std::vector<Book> Library::getTitleList(std::string title)
     return ret;
 }
 
-bool Library::deleteBook(std::string title)
+bool Library::deleteBook(const std::string title)
 {
     auto pos = std::find_if(books.begin(), books.end(), [&title](Book &arg) { return arg.getTitle() == title; });
     if (pos != books.end())
@@ -92,7 +92,7 @@ std::set<std::string> Library::getAuthors()
     return ret;
 }
 
-bool Library::deleteAuthor(std::string name)
+bool Library::deleteAuthor(const std::string name)
 {
     bool deleted = false;
     std::vector<std::list<Book>::iterator> ptrs;
