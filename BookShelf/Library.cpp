@@ -1,5 +1,6 @@
 #include "Library.h"
 #include <algorithm>
+#include "Testing.h"
 
 Library::Library()
 {}
@@ -10,13 +11,10 @@ Book Library::getBook(std::string title)
     for (; pos != books.end();pos++)
         if (pos->getTitle() == title)
              return (*pos);
+
     if (pos == books.end())
     {
-        std::string authorER = "ERROR";
-        std::string titleER = "ERROR";
-        int yearER = 0;
-        Book tmp(authorER, titleER, yearER);
-        return tmp;
+        throw DoesntExistException();
     }
 }
 
@@ -33,10 +31,10 @@ std::vector<Book> Library::getAuthorList(std::string author)
     for (Book bk : books)
         if (bk.getAuthor() == author)
             ret.push_back(bk);
+
     if (ret.size() == 0)
     {
-        Book tmp = Book("ERROR", "ERROR", INT32_MAX);
-        ret.push_back(tmp);
+        throw DoesntExistException();
     }
     return ret;
 }
@@ -47,6 +45,11 @@ std::vector<Book> Library::getYearList(int year)
     for (Book bk : books)
         if (bk.getYear() == year)
             ret.push_back(bk);
+
+    if (ret.size() == 0)
+    {
+        throw DoesntExistException();
+    }
     return ret;
 }
 
@@ -56,6 +59,11 @@ std::vector<Book> Library::getTitleList(std::string title)
     for (Book bk : books)
         if (bk.getTitle() == title)
             ret.push_back(bk);
+
+    if (ret.size() == 0)
+    {
+        throw DoesntExistException();
+    }
     return ret;
 }
 
@@ -73,10 +81,15 @@ bool Library::deleteBook(std::string title)
 
 std::set<std::string> Library::getAuthors()
 {
-    std::set<std::string> retVal;
+    std::set<std::string> ret;
     for (Book bk : books)
-        retVal.insert(bk.getAuthor());
-    return retVal;
+        ret.insert(bk.getAuthor());
+
+    if (ret.empty())
+    {
+        throw DoesntExistException();
+    }
+    return ret;
 }
 
 bool Library::deleteAuthor(std::string name)

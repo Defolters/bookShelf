@@ -1,10 +1,12 @@
 #include "Library.h"
 #include "Book.h"
+#include "Testing.h"
 #include <iostream>
 
 int main()
 {
     Library library;
+
     if (library.addBook("Somebody", "Chaos", 1995))
     {
         std::cout << "library.addBook(\"Somebody\", \"Chaos\", 1995) was done" << std::endl;
@@ -15,54 +17,51 @@ int main()
 
     }
 
-
-    Book book = library.getBook("Chaos");
-    if (book.getTitle() == "Chaos")
+    try
     {
+        Book book = library.getBook("Chaos");
         std::cout << "library.getBook(\"Chaos\") was done" << std::endl;
-
     }
-    else if (book.getTitle() == "ERROR")
+    catch (DoesntExistException& ex)
     {
+        std::cout << ex.what() << std::endl;
         std::cout << "library.getBook(\"Chaos\") error" << std::endl;
-
     }
 
-
-
-    std::vector<Book> vectorA = library.getAuthorList("Somebody");
-    if ((!vectorA.empty()) && (vectorA[0].getAuthor() == "Somebody"))
+    
+    try
     {
+        std::vector<Book> vectorA = library.getAuthorList("Somebody");
         std::cout << "library.getAuthorList(\"Somebody\") was done" << std::endl;
     }
-    else
+    catch (DoesntExistException& ex)
     {
+        std::cout << ex.what() << std::endl;
         std::cout << "library.getAuthorList(\"Somebody\") error" << std::endl;
     }
     
-
-    std::vector<Book> vectorY = library.getYearList(1997);
-    if ((!vectorY.empty()) && (vectorY[0].getYear() == 1997))
+    try
     {
+        std::vector<Book> vectorY = library.getYearList(1997);
         std::cout << "library.getYearList(1997) error" << std::endl;
     }
-    else
+    catch (DoesntExistException& ex)
     {
+        std::cout << ex.what() << std::endl;
         std::cout << "library.getYearList(1997) was done" << std::endl;
     }
 
-
-
-    std::set<std::string> authors = library.getAuthors();
-    if (authors.find("Somebody") != authors.end())
+    try
     {
+        std::set<std::string> authors = library.getAuthors();
         std::cout << "library.getAuthors() was done" << std::endl;
     }
-    else
+    catch (DoesntExistException& ex)
     {
+        std::cout << ex.what() << std::endl;
         std::cout << "library.getAuthors() error" << std::endl;
-
     }
+
 
     if (library.deleteAuthor("Somebody"))
     {
@@ -72,18 +71,7 @@ int main()
     {
         std::cout << "library.deleteAuthor(\"Nameless\") error" << std::endl;
     }
-
-
-    std::vector<Book> vectorB = library.getAuthorList("Somebody");
-    if ((!vectorB.empty()) && (vectorB[0].getAuthor() == "Somebody"))
-    {
-        std::cout << "library.getAuthorList(\"Somebody\") error" << std::endl;
-    }
-    else
-    {
-        std::cout << "library.getAuthorList(\"Somebody\") was done" << std::endl;
-    }
-
+ 
     std::cin.get();
     return 0;
 }
