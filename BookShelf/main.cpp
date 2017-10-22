@@ -32,7 +32,7 @@ int main()
     
     try
     {
-        std::vector<Book> vectorA = library.getAuthorList("Somebody");
+        std::set<Book> vectorA = library.getAuthorList("Somebody");
         std::cout << "library.getAuthorList(\"Somebody\") was done" << std::endl;
     }
     catch (DoesntExistException& ex)
@@ -43,7 +43,7 @@ int main()
     
     try
     {
-        std::vector<Book> vectorY = library.getYearList(1997);
+        std::set<Book> vectorY = library.getYearList(1997);
         std::cout << "library.getYearList(1997) error" << std::endl;
     }
     catch (DoesntExistException& ex)

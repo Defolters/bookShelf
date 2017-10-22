@@ -7,7 +7,7 @@ Library::Library()
 
 Book Library::getBook(const std::string title)
 {
-    auto pos = books.begin();
+	auto pos = books.cbegin;
     for (; pos != books.end();pos++)
         if (pos->getTitle() == title)
              return (*pos);
@@ -21,16 +21,16 @@ Book Library::getBook(const std::string title)
 bool Library::addBook(const std::string author, const std::string title, const int year)
 {
     Book temp(author, title, year);
-    books.push_back(temp);
+	books.insert(temp); 
     return true;
 }
 
-std::vector<Book> Library::getAuthorList(const std::string author)
+std::set<Book> Library::getAuthorList(const std::string author)
 {
-    std::vector<Book> ret;
+    std::set<Book> ret;
     for (Book bk : books)
         if (bk.getAuthor() == author)
-            ret.push_back(bk);
+            ret.insert(bk);
 
     if (ret.size() == 0)
     {
@@ -39,12 +39,12 @@ std::vector<Book> Library::getAuthorList(const std::string author)
     return ret;
 }
 
-std::vector<Book> Library::getYearList(const int year)
+std::set<Book> Library::getYearList(const int year)
 {
-    std::vector<Book> ret;
+    std::set<Book> ret;
     for (Book bk : books)
         if (bk.getYear() == year)
-            ret.push_back(bk);
+            ret.insert(bk);
 
     if (ret.size() == 0)
     {
@@ -53,12 +53,12 @@ std::vector<Book> Library::getYearList(const int year)
     return ret;
 }
 
-std::vector<Book> Library::getTitleList(const std::string title)
+std::set<Book> Library::getTitleList(const std::string title)
 {
-    std::vector<Book> ret;
+    std::set<Book> ret;
     for (Book bk : books)
         if (bk.getTitle() == title)
-            ret.push_back(bk);
+            ret.insert(bk);
 
     if (ret.size() == 0)
     {
@@ -95,8 +95,8 @@ std::set<std::string> Library::getAuthors()
 bool Library::deleteAuthor(const std::string name)
 {
     bool deleted = false;
-    std::vector<std::list<Book>::iterator> ptrs;
-    auto pos = books.begin();
+    std::vector<std::set<Book>::iterator> ptrs;
+	auto pos = books.cbegin;
     for (; pos != books.end();pos ++)
         if (pos->getAuthor() == name)
         {

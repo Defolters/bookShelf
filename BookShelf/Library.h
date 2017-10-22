@@ -37,21 +37,21 @@ public:
     \param author name of author.
     \return vector<Book>
     */
-    std::vector<Book> getAuthorList(const std::string author);
+    std::set<Book> getAuthorList(const std::string author);
 
     //! get list of books with specified year of publishing
     /*!
     \param year year of publication
     \return vector<Book>
     */
-    std::vector<Book> getYearList(const int year);
+    std::set<Book> getYearList(const int year);
 
     //! get list of books with specified title
     /*!
     \param title title of the book
     \return vector<Book>
     */
-    std::vector<Book> getTitleList(const std::string title);
+    std::set<Book> getTitleList(const std::string title);
 
     //! get list of authors
     /*!
@@ -76,7 +76,7 @@ public:
     //! Destructor
     ~Library();
 private:
-    std::list<Book> books; /*!< list of books. */ 
+    std::set<Book> books; /*!< list of books. */ 
 };
 
 #endif // LIBRARY_H
