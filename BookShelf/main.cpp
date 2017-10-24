@@ -3,21 +3,24 @@
 #include "Testing.h"
 #include <iostream>
 /*
-    ¬се в set, перегрузить оператор сравнени€
+¬се в set, перегрузить оператор сравнени€
 */
 int main()
 {
     Library library;
+    library.addBook("Somebody", "Chaos", 1995);
+    library.addBook("Somebody", "Abyss", 1995);
+    library.addBook("Somebody", "Hell", 1995);
 
     if (library.addBook("Somebody", "Chaos", 1995))
     {
-        std::cout << "library.addBook(\"Somebody\", \"Chaos\", 1995) was done" << std::endl;
+        std::cout << "library.addBook(\"Somebody\", \"Chaos\", 1995) error" << std::endl;
     }
     else
     {
-        std::cout << "library.addBook(\"Somebody\", \"Chaos\", 1995) error" << std::endl;
-
+        std::cout << "library.addBook(\"Somebody\", \"Chaos\", 1995) was done" << std::endl;
     }
+
     try
     {
         Book book = library.getBook("Chaos");
@@ -29,7 +32,7 @@ int main()
         std::cout << "library.getBook(\"Chaos\") error" << std::endl;
     }
 
-    
+
     try
     {
         std::set<Book> vectorA = library.getAuthorList("Somebody");
@@ -40,7 +43,7 @@ int main()
         std::cout << ex.what() << std::endl;
         std::cout << "library.getAuthorList(\"Somebody\") error" << std::endl;
     }
-    
+
     try
     {
         std::set<Book> vectorY = library.getYearList(1997);
@@ -63,16 +66,24 @@ int main()
         std::cout << "library.getAuthors() error" << std::endl;
     }
 
-
-    if (library.deleteAuthor("Somebody"))
+    if (library.deleteBook("Hell"))
     {
-        std::cout << "library.deleteAuthor(\"Nameless\") was done" << std::endl;
+        std::cout << "library.deleteBook(\"Hell\") was done" << std::endl;
     }
     else
     {
         std::cout << "library.deleteAuthor(\"Nameless\") error" << std::endl;
     }
- 
+
+    if (library.deleteAuthor("Somebody"))
+    {
+        std::cout << "library.deleteAuthor(\"Somebody\") was done" << std::endl;
+    }
+    else
+    {
+        std::cout << "library.deleteAuthor(\"Somebody\") error" << std::endl;
+    }
+
     std::cin.get();
     return 0;
 }

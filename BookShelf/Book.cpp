@@ -30,17 +30,29 @@ bool Book::setYear(const int& year_)
     return true;
 }
 
-std::string Book::getAuthor()
+std::string Book::getAuthor() const
 {
     return author;
 }
 
-std::string Book::getTitle()
+std::string Book::getTitle() const
 {
     return title;
 }
 
-int Book::getYear()
+int Book::getYear() const
 {
     return year;
+}
+
+bool Book::operator<(const Book & book) const
+{
+    if (this->getTitle() < book.getTitle())
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

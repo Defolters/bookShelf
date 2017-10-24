@@ -46,19 +46,27 @@ public:
     /*!
     \return name
     */
-    std::string getAuthor();
+    std::string getAuthor() const;
 
     //! get title of the book
     /*!
     \return title
     */
-    std::string getTitle();
+    std::string getTitle() const;
     
     //! get year of publication
     /*!
     \return year
     */
-    int getYear();
+    int getYear() const;
+
+    //! overload operator <
+    /*!
+    Overload operator in order to use set
+    \param book instance of book which will be compared
+    \return bool
+    */
+    bool operator< (const Book& book) const;
 
 private:
     std::string author; /*!< name of author. */ 
