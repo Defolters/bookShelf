@@ -2,9 +2,7 @@
 #include "Book.h"
 #include "Testing.h"
 #include <iostream>
-/*
-¬се в set, перегрузить оператор сравнени€
-*/
+
 int main()
 {
     Library library;
